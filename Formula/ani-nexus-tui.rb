@@ -4,7 +4,10 @@ class AniNexusTui < Formula
   version "0.1.1"
   license "CC-BY-NC-SA-4.0"
 
-
+  bottle do
+    root_url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/v0.1.1"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "c454fb5d10b0482daf5f75f4347ef4a241df4581879e1290274395467431d270"
+  end
 
   on_macos do
     if Hardware::CPU.arm?
