@@ -67,6 +67,7 @@ ${bottle_block}
 
   on_linux do
     if Hardware::CPU.intel?
+      depends_on "gcc" => :build
       url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/${tag}/ani-nexus-tui-x86_64-unknown-linux-gnu.tar.xz"
       sha256 "${linux_x64_sha}"
     else

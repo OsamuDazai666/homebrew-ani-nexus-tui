@@ -18,6 +18,7 @@ class AniNexusTui < Formula
 
   on_linux do
     if Hardware::CPU.intel?
+      depends_on "gcc" => :build
       url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/v0.1.1/ani-nexus-tui-x86_64-unknown-linux-gnu.tar.xz"
       sha256 "c6770f41fde42a83431f193e3530f0881d78a82a45b4eb0c56cc9ddc64a01708"
     else
