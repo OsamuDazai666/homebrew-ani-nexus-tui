@@ -6,16 +6,16 @@ class AniNexusTui < Formula
 
   bottle do
     root_url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/v0.1.1"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "a1d2e4906b568ba46e6801fb0dba1cd1dc01141616bebac1776a95cf9d1c5093"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "f749fb090d35ee4a0daee8c6556111096546d7958d439feec9e9a05f787b477c"
   end
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/v0.1.1/ani-nexus-tui-aarch64-apple-darwin.tar.xz"
-      sha256 "d0eaaaee82a3820b792edcc6cf20c0806a802ec257e27d7d5595271b031b4c66"
+      sha256 "07b79f21814a160ad693289b78667a8d25b84a4a4526c88a2166929da9973af5"
     else
       url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/v0.1.1/ani-nexus-tui-x86_64-apple-darwin.tar.xz"
-      sha256 "90ef42946ea639034a6434996370020244fd606c5e1396f4e97dba927923fd2c"
+      sha256 "05eb49a45a007516c514dafd1fe4f05f73da1080e2f2170445e09ec71ad077b1"
     end
   end
 
@@ -23,7 +23,7 @@ class AniNexusTui < Formula
     if Hardware::CPU.intel?
       depends_on "gcc" => :build
       url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/v0.1.1/ani-nexus-tui-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "fbc4da356ac7d11e00726794c6baa9e3a601b9a62364c2de486691b500b4b238"
+      sha256 "0073aa7c2bf0c3f91aa3b435f7b1ac70329d47240851da0a4dbc762fb622672c"
     else
       odie "ani-nexus-tui currently publishes Homebrew Linux assets for x86_64 only"
     end
