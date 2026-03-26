@@ -7,7 +7,10 @@ Homebrew tap for `ani-nexus-tui`.
 ```bash
 brew tap OsamuDazai666/ani-nexus-tui
 brew install ani-nexus-tui
+ani-nexus-tui --version
 ```
+
+`ani-nexus` and `ani-nexus-tui` both point to the same executable.
 
 ## Files
 

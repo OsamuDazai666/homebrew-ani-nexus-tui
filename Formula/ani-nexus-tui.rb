@@ -28,9 +28,11 @@ class AniNexusTui < Formula
     odie "ani-nexus binary not found in archive" if binary.nil?
 
     bin.install binary => "ani-nexus"
+    bin.install_symlink "ani-nexus" => "ani-nexus-tui"
   end
 
   test do
     assert_match version.to_s, shell_output("#{bin}/ani-nexus --version")
+    assert_predicate bin/"ani-nexus-tui", :exist?
   end
 end

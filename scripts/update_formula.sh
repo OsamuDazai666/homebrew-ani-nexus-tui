@@ -23,8 +23,9 @@ asset_digest() {
 macos_arm_sha="$(asset_digest "ani-nexus-tui-aarch64-apple-darwin.tar.xz")"
 macos_x64_sha="$(asset_digest "ani-nexus-tui-x86_64-apple-darwin.tar.xz")"
 linux_x64_sha="$(asset_digest "ani-nexus-tui-x86_64-unknown-linux-gnu.tar.xz")"
+linux_bottle_sha="$(asset_digest "ani-nexus-tui--${version}.x86_64_linux.bottle.tar.gz")"
 
-for value in "$version" "$macos_arm_sha" "$macos_x64_sha" "$linux_x64_sha"; do
+for value in "$version" "$macos_arm_sha" "$macos_x64_sha" "$linux_x64_sha" "$linux_bottle_sha"; do
   if [[ -z "$value" || "$value" == "null" ]]; then
     echo "Missing required release metadata from ${API_URL}" >&2
     exit 1
@@ -37,6 +38,11 @@ class AniNexusTui < Formula
   homepage "https://github.com/OsamuDazai666/ani-nexus-tui"
   version "${version}"
   license "CC-BY-NC-SA-4.0"
+
+  bottle do
+    root_url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/${tag}"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "${linux_bottle_sha}"
+  end
 
   on_macos do
     if Hardware::CPU.arm?
@@ -62,10 +68,12 @@ class AniNexusTui < Formula
     odie "ani-nexus binary not found in archive" if binary.nil?
 
     bin.install binary => "ani-nexus"
+    bin.install_symlink "ani-nexus" => "ani-nexus-tui"
   end
 
   test do
     assert_match version.to_s, shell_output("#{bin}/ani-nexus --version")
+    assert_predicate bin/"ani-nexus-tui", :exist?
   end
 end
 EOF
