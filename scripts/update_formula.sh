@@ -23,7 +23,10 @@ asset_digest() {
 macos_arm_sha="$(asset_digest "ani-nexus-tui-aarch64-apple-darwin.tar.xz")"
 macos_x64_sha="$(asset_digest "ani-nexus-tui-x86_64-apple-darwin.tar.xz")"
 linux_x64_sha="$(asset_digest "ani-nexus-tui-x86_64-unknown-linux-gnu.tar.xz")"
-linux_bottle_sha="$(asset_digest "ani-nexus-tui--${version}.x86_64_linux.bottle.tar.gz")"
+linux_bottle_sha="$(asset_digest "ani-nexus-tui-${version}.x86_64_linux.bottle.tar.gz")"
+if [[ -z "$linux_bottle_sha" || "$linux_bottle_sha" == "null" ]]; then
+  linux_bottle_sha="$(asset_digest "ani-nexus-tui--${version}.x86_64_linux.bottle.tar.gz")"
+fi
 
 for value in "$version" "$macos_arm_sha" "$macos_x64_sha" "$linux_x64_sha"; do
   if [[ -z "$value" || "$value" == "null" ]]; then
