@@ -9,10 +9,10 @@ class AniNexusTui < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/v0.1.1/ani-nexus-tui-aarch64-apple-darwin.tar.xz"
-      sha256 "1c0a76da70f52afa9ec4ba453e4e7a6a05246bd9129de41f13ea3526b292a386"
+      sha256 "d0eaaaee82a3820b792edcc6cf20c0806a802ec257e27d7d5595271b031b4c66"
     else
       url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/v0.1.1/ani-nexus-tui-x86_64-apple-darwin.tar.xz"
-      sha256 "9da0fa5e53a3a13433ff9b8d963ecb88795c8d7264d834c55d7334772d15c7a8"
+      sha256 "90ef42946ea639034a6434996370020244fd606c5e1396f4e97dba927923fd2c"
     end
   end
 
@@ -20,7 +20,7 @@ class AniNexusTui < Formula
     if Hardware::CPU.intel?
       depends_on "gcc" => :build
       url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/v0.1.1/ani-nexus-tui-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "c6770f41fde42a83431f193e3530f0881d78a82a45b4eb0c56cc9ddc64a01708"
+      sha256 "fbc4da356ac7d11e00726794c6baa9e3a601b9a62364c2de486691b500b4b238"
     else
       odie "ani-nexus-tui currently publishes Homebrew Linux assets for x86_64 only"
     end
