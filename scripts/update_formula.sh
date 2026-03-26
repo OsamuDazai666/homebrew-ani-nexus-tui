@@ -25,12 +25,26 @@ macos_x64_sha="$(asset_digest "ani-nexus-tui-x86_64-apple-darwin.tar.xz")"
 linux_x64_sha="$(asset_digest "ani-nexus-tui-x86_64-unknown-linux-gnu.tar.xz")"
 linux_bottle_sha="$(asset_digest "ani-nexus-tui--${version}.x86_64_linux.bottle.tar.gz")"
 
-for value in "$version" "$macos_arm_sha" "$macos_x64_sha" "$linux_x64_sha" "$linux_bottle_sha"; do
+for value in "$version" "$macos_arm_sha" "$macos_x64_sha" "$linux_x64_sha"; do
   if [[ -z "$value" || "$value" == "null" ]]; then
     echo "Missing required release metadata from ${API_URL}" >&2
     exit 1
   fi
 done
+
+bottle_block=""
+if [[ -n "$linux_bottle_sha" && "$linux_bottle_sha" != "null" ]]; then
+  bottle_block="$(cat <<EOF
+  bottle do
+    root_url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/${tag}"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "${linux_bottle_sha}"
+  end
+
+EOF
+)"
+else
+  echo "Linux bottle asset not found for ${tag}; generating formula without bottle block." >&2
+fi
 
 cat > Formula/ani-nexus-tui.rb <<EOF
 class AniNexusTui < Formula
@@ -39,10 +53,7 @@ class AniNexusTui < Formula
   version "${version}"
   license "CC-BY-NC-SA-4.0"
 
-  bottle do
-    root_url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/${tag}"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "${linux_bottle_sha}"
-  end
+${bottle_block}
 
   on_macos do
     if Hardware::CPU.arm?
