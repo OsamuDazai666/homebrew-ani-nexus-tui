@@ -1,29 +1,29 @@
 class AniNexusTui < Formula
   desc "Blazing-fast TUI for Anime"
   homepage "https://github.com/OsamuDazai666/ani-nexus-tui"
-  version "0.1.2"
+  version "0.1.3"
   license "CC-BY-NC-SA-4.0"
 
   bottle do
-    root_url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/v0.1.2"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "913207a476b6f5ea2daed8405a4365184a0f2ba958f1226a0d524864181839d7"
+    root_url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/v0.1.3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "f9343945327941057e3747c8f0654e4943e8ccbd53558c4bf6bc1f24aa1abce1"
   end
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/v0.1.2/ani-nexus-tui-aarch64-apple-darwin.tar.xz"
-      sha256 "5dcdaf0f8ca98d01562de26e248c04a487cadf07857fcf381c660c837100c87f"
+      url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/v0.1.3/ani-nexus-tui-aarch64-apple-darwin.tar.xz"
+      sha256 "47970bba00b2e2e7ba586c932bab9df406cbb916a8389e9c3127a98d599d0114"
     else
-      url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/v0.1.2/ani-nexus-tui-x86_64-apple-darwin.tar.xz"
-      sha256 "1f4a5de5a1c129c4fb2f51f7cff469f0ecbe6de885063d17682218c9b5a902e8"
+      url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/v0.1.3/ani-nexus-tui-x86_64-apple-darwin.tar.xz"
+      sha256 "0de2f669f864125b31d4eeaf1e34389ff1312b7efe1783ffd31d37aa4627224f"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
       depends_on "gcc" => :build
-      url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/v0.1.2/ani-nexus-tui-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "45c4b0c605699a8c9598100555d2dbfdba13328a6c9dc5c69d58a72a4557bd15"
+      url "https://github.com/OsamuDazai666/ani-nexus-tui/releases/download/v0.1.3/ani-nexus-tui-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "fd0bbbfaf95cac53a6fa3ee733b433ff7923fdcdcebb54fea6a2cbcc410f2c31"
     else
       odie "ani-nexus-tui currently publishes Homebrew Linux assets for x86_64 only"
     end
